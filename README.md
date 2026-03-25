@@ -10,9 +10,9 @@ Draw in the air with your hand. Built with Python and MediaPipe.
 
 ## Run It
 
-**Install:** pip install -r requirements.txt
+pip install -r requirements.txt
 
-**Run:**python server.py
+python server.py
 
 Open http://localhost:8000
 
