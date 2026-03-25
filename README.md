@@ -22,4 +22,4 @@ Python | FastAPI | OpenCV | MediaPipe
 
 ---
 
-Priti Singh Nepali
+
