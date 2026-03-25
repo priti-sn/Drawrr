@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Drawrr</title>
+</head>
+
+<body>
+    <h1>Drawrr</h1>
+    <p><b>How to use:</b></p>
+    <ul>
+        <li>Point your index finger to draw</li>
+        <li>Pinch thumb + index to toggle pen on/off</li>
+        <li>Hold a fist to clear the canvas</li>
+    </ul>
+
+    <p>Status: <b id="status">connecting...</b></p>
+    <hr>
+    <img id="feed" width="640" height="480" alt="camera feed">
+
+    <script>
+        var feed = document.getElementById("feed");
+        var statusEl = document.getElementById("status");
+        var prevUrl = null;
+
+        function connect() {
+            var proto = location.protocol === "https:" ? "wss:" : "ws:";
+            var ws = new WebSocket(proto + "//" + location.host + "/ws");
+            ws.binaryType = "blob";
+
+            ws.onopen = function () {
+                statusEl.textContent = "connected";
+            };
+
+            ws.onmessage = function (e) {
+                if (prevUrl) URL.revokeObjectURL(prevUrl);
+                prevUrl = URL.createObjectURL(e.data);
+                feed.src = prevUrl;
+            };
+
+            ws.onclose = function () {
+                statusEl.textContent = "disconnected, retrying...";
+                setTimeout(connect, 2000);
+            };
+
+            ws.onerror = function () { ws.close(); };
+        }
+
+        connect();
+    </script>
+</body>
+
+</html>
