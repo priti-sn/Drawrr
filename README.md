@@ -14,5 +14,11 @@ pip install -r requirements.txt
 python server.py
 
 Open http://localhost:8000
-Stack
+
+## Stack
+
 Python | FastAPI | OpenCV | MediaPipe
+
+---
+
+Priti Singh Nepali
