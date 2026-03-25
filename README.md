@@ -10,16 +10,11 @@ Draw in the air with your hand. Built with Python and MediaPipe.
 
 ## Run It
 
+```
 pip install -r requirements.txt
-
 python server.py
+```
 
 Open http://localhost:8000
 
-## Stack
-
-Python | FastAPI | OpenCV | MediaPipe
-
 ---
-
-
